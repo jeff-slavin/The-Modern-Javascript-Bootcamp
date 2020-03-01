@@ -20,7 +20,7 @@ const renderNotes = function (notes, filters) {
         return item.title.toLowerCase().includes(filters.searchText.toLowerCase());
     });
 
-    document.querySelector('#notes').innerHTML = '<p>Test</p>';
+ document.querySelector('#notes').innerHTML = '';
     
     filteredNotes.forEach(function (note) {
         const noteElement = document.createElement('p');
@@ -35,16 +35,23 @@ document.querySelector('#create-note').addEventListener('click', function(e) {
     e.target.textContent = 'The button was clicked';
 });
 
-document.querySelector('#remove-all').addEventListener('click', function(e) {
-    document.querySelectorAll('.note').forEach(function(note) {
-        note.remove();
-    });
-});
+// document.querySelector('#remove-all').addEventListener('click', function(e) {
+//     document.querySelectorAll('.note').forEach(function(note) {
+//         note.remove();
+//     });
+// });
 
 document.querySelector('#search-text').addEventListener('input', function(e) {
     filters.searchText = e.target.value;
     renderNotes(notes, filters);
 });
+
+document.querySelector('#name-form').addEventListener('submit', function(e) {
+    // cancel default browser action (full page refresh and URL changing to include data)
+    e.preventDefault();
+    console.log(e.target.elements.firstName.value);
+    e.target.elements.firstName.value = '';
+})
 
 // document.querySelector('#search-text').addEventListener('change', function(e) {
 //     console.log(e.target.value);
