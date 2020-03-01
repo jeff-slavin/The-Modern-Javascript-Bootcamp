@@ -46,12 +46,16 @@ document.querySelector('#search-text').addEventListener('input', function(e) {
     renderNotes(notes, filters);
 });
 
-document.querySelector('#name-form').addEventListener('submit', function(e) {
-    // cancel default browser action (full page refresh and URL changing to include data)
-    e.preventDefault();
-    console.log(e.target.elements.firstName.value);
-    e.target.elements.firstName.value = '';
-})
+document.querySelector('#for-fun').addEventListener('change', function(e) {
+    console.log(e.target.checked);
+});
+
+// document.querySelector('#name-form').addEventListener('submit', function(e) {
+//     // cancel default browser action (full page refresh and URL changing to include data)
+//     e.preventDefault();
+//     console.log(e.target.elements.firstName.value);
+//     e.target.elements.firstName.value = '';
+// })
 
 // document.querySelector('#search-text').addEventListener('change', function(e) {
 //     console.log(e.target.value);
