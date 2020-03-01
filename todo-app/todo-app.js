@@ -36,12 +36,29 @@ const renderTodos = function(todos, filters) {
 
     filteredTodos.forEach(function(item){
         const newParagraph = document.createElement('P');
-        newParagraph.textContent = item.text;
+        newParagraph.textContent = item.text + ' - ' + 'Completed: ' + item.completed;
         document.querySelector('#todos').appendChild(newParagraph);
     });
 };
 
 renderTodos(todos, filters);
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+    filters.searchText = e.target.value;
+    renderTodos(todos, filters);
+});
+
+document.querySelector('#new-todo').addEventListener('submit', function(e) {
+    e.preventDefault();
+    todos.push({
+        text: e.target.elements.text.value,
+        completed: false
+    });
+
+    renderTodos(todos, filters);
+
+    e.target.elements.text.value = '';
+})
 
 // List Total TODOs left
 // let todosLeft = 0;
@@ -53,16 +70,11 @@ renderTodos(todos, filters);
 // });
 
 // // Listen for 'Add TODO' button click listener
-document.querySelector('#add-todo').addEventListener('click', function(e) {
-    console.log("I'm adding a new TODO.");
-});
+// document.querySelector('#add-todo').addEventListener('click', function(e) {
+//     console.log("I'm adding a new TODO.");
+// });
 
 // // Listen for text typed into the 'enter new todo' textbox
-document.querySelector('#new-todo-text').addEventListener('input', function(e) {
-    console.log(e.target.value);
-});
-
-document.querySelector('#search-text').addEventListener('input', function(e) {
-    filters.searchText = e.target.value;
-    renderTodos(todos, filters);
-});
+// document.querySelector('#new-todo-text').addEventListener('input', function(e) {
+//     console.log(e.target.value);
+// });
