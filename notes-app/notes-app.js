@@ -15,6 +15,25 @@ const filters = {
     searchText: ''
 };
 
+// const user = {
+//     name: 'Jeff',
+//     age: 38
+// };
+
+// const userJSON = JSON.stringify(user);
+// console.log(userJSON);
+// localStorage.setItem('user', userJSON);
+
+const userJSON = localStorage.getItem('user');
+const user = JSON.parse(userJSON);
+console.log(`${user.name} is ${user.age} years old`);
+
+//CRUD operations = Create, Read, Update, Delete
+// localStorage.setItem('location', 'Denver');
+// console.log(localStorage.getItem('location'));
+// localStorage.removeItem('location');
+// localStorage.clear();
+
 const renderNotes = function (notes, filters) {
     const filteredNotes = notes.filter(function(item) {
         return item.title.toLowerCase().includes(filters.searchText.toLowerCase());
