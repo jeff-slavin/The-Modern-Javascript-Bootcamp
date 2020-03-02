@@ -1,18 +1,16 @@
 // DOM - Document Object Model
 
-const notes = [{
-    title: 'My next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}];
+let notes = [];
 
 const filters = {
     searchText: ''
+};
+
+// Check for existing saved data
+const notesJSON = localStorage.getItem('notes');
+
+if(notesJSON !== null) {
+    notes = JSON.parse(notesJSON);
 };
 
 // const user = {
@@ -24,9 +22,9 @@ const filters = {
 // console.log(userJSON);
 // localStorage.setItem('user', userJSON);
 
-const userJSON = localStorage.getItem('user');
-const user = JSON.parse(userJSON);
-console.log(`${user.name} is ${user.age} years old`);
+// const userJSON = localStorage.getItem('user');
+// const user = JSON.parse(userJSON);
+// console.log(`${user.name} is ${user.age} years old`);
 
 //CRUD operations = Create, Read, Update, Delete
 // localStorage.setItem('location', 'Denver');
@@ -43,7 +41,13 @@ const renderNotes = function (notes, filters) {
     
     filteredNotes.forEach(function (note) {
         const noteElement = document.createElement('p');
-        noteElement.textContent = note.title;
+
+        if (note.title.length > 0) {
+            noteElement.textContent = note.title;
+        } else {
+            noteElement.textContent = 'Unnamed note';
+        };
+        
         document.querySelector('#notes').appendChild(noteElement);
     })
 };
@@ -51,7 +55,14 @@ const renderNotes = function (notes, filters) {
 renderNotes(notes, filters);
 
 document.querySelector('#create-note').addEventListener('click', function(e) {
-    e.target.textContent = 'The button was clicked';
+    notes.push( {
+        title: '',
+        body: ''
+    });
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+
+    renderNotes(notes, filters);
 });
 
 // document.querySelector('#remove-all').addEventListener('click', function(e) {
