@@ -25,3 +25,7 @@
 // document.querySelector('#new-todo-text').addEventListener('input', function(e) {
 //     console.log(e.target.value);
 // });
+
+// Adding the 'debugger' line to your scrip:
+//debugger; // pauses the page when this line is hit (as long as dev tools are open in the browser)
+//     can then view variables etc and play step by step (like a breakpoint, but in the browser)

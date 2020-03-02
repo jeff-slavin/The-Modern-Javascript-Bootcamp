@@ -17,9 +17,25 @@ const saveTODOs = function(todos) {
 
 // Generate the DOM structure for a TODO
 const generateTODODOM = function(todo) {
-    const newElement = document.createElement('P');
-    newElement.textContent = todo.text + ' - ' + 'Completed: ' + todo.completed;
-    return newElement;
+
+    const todoElement = document.createElement('div');
+    const checkboxElement = document.createElement('input');
+    const textElement = document.createElement('span');
+    const button = document.createElement('button');
+
+    // Setup the checkbox
+    checkboxElement.setAttribute('type', 'checkbox');
+    todoElement.appendChild(checkboxElement);
+
+    // Set the text element text and append
+    textElement.textContent = todo.text + ' - ' + 'Completed: ' + todo.completed;
+    todoElement.appendChild(textElement);
+
+    // Append the button
+    button.textContent = 'x';
+    todoElement.appendChild(button);
+
+    return todoElement;
 };
 
 const generateTODOSummaryDOM = function(incompleteTodos) {
@@ -33,8 +49,7 @@ const renderTodos = function(todos, filters) {
     const filteredTodos = todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
         const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
-        //debugger; // pauses the page when this line is hit (as long as dev tools are open in the browser)
-        //     can then view variables etc and play step by step (like a breakpoint, but in the browser)
+
         return searchTextMatch && hideCompletedMatch;
     });
 
