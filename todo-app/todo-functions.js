@@ -33,7 +33,8 @@ const renderTodos = function(todos, filters) {
     const filteredTodos = todos.filter(function (todo) {
         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
         const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
-
+        //debugger; // pauses the page when this line is hit (as long as dev tools are open in the browser)
+        //     can then view variables etc and play step by step (like a breakpoint, but in the browser)
         return searchTextMatch && hideCompletedMatch;
     });
 
