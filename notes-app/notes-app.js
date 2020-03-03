@@ -10,11 +10,15 @@ renderNotes(notes, filters);
 
 document.querySelector('#create-note').addEventListener('click', function(e) {
     const uniqueID = uuidv4();
-    
+    const timestamp = moment().valueOf();
+
     notes.push( {
         id: uniqueID,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestamp,
+        updatedAt: timestamp
+        
     });
 
     saveNotes(notes);
@@ -37,19 +41,3 @@ window.addEventListener('storage', function(e) {
         renderNotes(notes, filters);
     };
 });
-
-// const now = moment();   // current time
-// now.add(1, 'year').subtract(20, 'days');
-// // console.log(now.toString());
-// console.log(now.format('MMMM Do, YYYY'));
-// console.log(now.fromNow());
-// console.log(now.valueOf()); // unix epoch
-// // now.minute(1);
-// // console.log(now.toString());
-
-const birthday = moment();
-// birthday.year(1981);
-// birthday.month(8);
-// birthday.day(28);
-birthday.year(1981).month(7).days(28);
-console.log(birthday.format('MMM D, YYYY'));
