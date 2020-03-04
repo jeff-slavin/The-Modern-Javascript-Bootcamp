@@ -33,6 +33,13 @@ Person.prototype.setName = function (fullName) {
 
 //const me = Person();
 const me = new Person('Jenn', 'Slavin', 37, ['Teaching', 'Biking']);
+// Shadowing (prototypal inheritance)
+// We setup a new property on our instance
+// "me" first looks on itself, and it finds getBio, it never goes up to the prototype
+// This won't impact person2 below, since person2 does not have 'getBio' on the instance level, so it looks up to the prototype
+// me.getBio = function () {
+//     return 'This is fake!';
+// };
 me.setName('Noah Slavin');
 // console.log(me);
 // console.log(typeof me);
@@ -40,6 +47,11 @@ me.setName('Noah Slavin');
 // me.firstName = 'Jeff';
 // console.log(me);
 console.log(me.getBio());
+
+// you can change what the member method does (above 'me' variable gets the first bio msg, the one below will get this new testing msg)
+// Person.prototype.getBio = function () {
+//     return 'Testing testing';
+// };
 
 const person2 = new Person('Jake', 'Davis', 40);
 // console.log(person2);
