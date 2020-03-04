@@ -21,13 +21,30 @@ const getGradeLetter = function(studentPercentage) {
 
 const gradeCalcString = function(studentScore, totalPossibleScore) {
 
+    // if(typeof studentScore === 'number' && typeof totalPossibleScore === 'number') {
+    //     const studentPercentage = getPercentage(studentScore, totalPossibleScore);
+    //     const studentLetterGrade = getGradeLetter(studentPercentage);
+    
+    //     return `You got a ${studentLetterGrade} (${studentPercentage}%)!`;
+    // } else {
+    //     throw Error('Please provide numbers only');
+    // };
+
+    if(typeof studentScore !== 'number' || typeof totalPossibleScore !== 'number') {
+        throw Error('Please provide numbers only');
+    };
+
     const studentPercentage = getPercentage(studentScore, totalPossibleScore);
     const studentLetterGrade = getGradeLetter(studentPercentage);
 
     return `You got a ${studentLetterGrade} (${studentPercentage}%)!`;
-
 }
 
-console.log(gradeCalcString(50, 100));
-console.log(gradeCalcString(75,100));
-console.log(gradeCalcString(89,101));
+try {
+    console.log(gradeCalcString(50, 100));
+    console.log(gradeCalcString(75,100));
+    console.log(gradeCalcString('hello',101));
+} catch (e) {
+    //console.log('Please provide numbers');
+    console.log(e.message);
+}
