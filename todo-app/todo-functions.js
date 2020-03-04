@@ -1,9 +1,14 @@
 
 // Read existing TODOs from localStorage
 const getSavedTODOs = () => {
-    const todosJSON = localStorage.getItem('todos');
 
-    return todosJSON ? JSON.parse(todosJSON) : [];
+    try {
+        const todosJSON = localStorage.getItem('todos');
+        return todosJSON ? JSON.parse(todosJSON) : [];
+    } catch (e) {
+        return [];
+    };
+
 
     // return todosJSON !== null ? JSON.parse(todosJSON) : [];
 
