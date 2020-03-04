@@ -3,7 +3,9 @@
 const getSavedTODOs = () => {
     const todosJSON = localStorage.getItem('todos');
 
-    return todosJSON !== null ? JSON.parse(todosJSON) : [];
+    return todosJSON ? JSON.parse(todosJSON) : [];
+
+    // return todosJSON !== null ? JSON.parse(todosJSON) : [];
 
     // if(todosJSON !== null) {
     //     return JSON.parse(todosJSON);
@@ -30,9 +32,13 @@ const removeTODO = (id) =>{
 const toggleTODO = (id) => {
     const todo = todos.find((todo) => todo.id === id);
 
-    if (todo != undefined) {
+    if (todo) {
         todo.completed = !todo.completed;
     };
+
+    // if (todo != undefined) {
+    //     todo.completed = !todo.completed;
+    // };
 };
 
 // Generate the DOM structure for a TODO
@@ -69,12 +75,6 @@ const generateTODODOM = (todo) => {
     return todoElement;
 };
 
-const generateTODOSummaryDOM = (incompleteTodos) => {
-    const summary = document.createElement('H2');
-    summary.textContent = `You have ${incompleteTodos.length} todos left.`;
-    return summary;
-};
-
 // Render application TODOs
 const renderTodos = (todos, filters) => {
     const filteredTodos = todos.filter((todo) => {
@@ -92,4 +92,10 @@ const renderTodos = (todos, filters) => {
     filteredTodos.forEach((item) => {
         document.querySelector('#todos').appendChild(generateTODODOM(item));
     });
+};
+
+const generateTODOSummaryDOM = (incompleteTodos) => {
+    const summary = document.createElement('H2');
+    summary.textContent = `You have ${incompleteTodos.length} todos left.`;
+    return summary;
 };

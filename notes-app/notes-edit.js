@@ -8,9 +8,13 @@ let notes = getSavedNotes();
 
 let note = notes.find((note) => note.id === noteID);
 
-if (note == undefined) {
+if (!note) {
     location.assign('/index.html');
 }
+
+// if (note == undefined) {
+//     location.assign('/index.html');
+// }
 
 titleElement.value = note.title;
 bodyElement.value = note.body;
@@ -46,9 +50,13 @@ window.addEventListener('storage', (e) => {
 
         note = notes.find((note) => note.id === noteID);
         
-        if (note == undefined) {
+        if (!note) {
             location.assign('/index.html');
         }
+
+        // if (note === undefined) {
+        //     location.assign('/index.html');
+        // }
         
         titleElement.value = note.title;
         bodyElement.value = note.body;
