@@ -32,6 +32,11 @@ getPuzzle((error, puzzle) => {
     };
 });
 
+// const puzzle = getPuzzleSync();
+// console.log(puzzle);
+
+// console.log('Do something else');
+
 // Making an HTTP request
 // const request = new XMLHttpRequest();
 
