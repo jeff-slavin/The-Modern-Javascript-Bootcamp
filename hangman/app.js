@@ -1,3 +1,34 @@
+
+const puzzleElement = document.querySelector('#puzzle');
+const guessesElement = document.querySelector('#guesses');
+
+const game1 = new Hangman('cat', 2);
+// console.log(game1.getPuzzle());
+// console.log(game1.remainingGuesses);
+puzzleElement.textContent = game1.getPuzzle();
+guessesElement.textContent = game1.remainingGuesses;
+
+console.log(game1.status);
+
+// const game2 = new Hangman('New Jersey', 4);
+// game2.makeGuess('w');
+// console.log(game2.getPuzzle());
+// console.log(game2.remainingGuesses);
+
+window.addEventListener('keypress', function (e) {
+    //const guess = String.fromCharCode(e.CharCode);
+    const guess = e.key
+    //console.log(guess);
+    game1.makeGuess(guess);
+    puzzleElement.textContent = game1.getPuzzle();
+    guessesElement.textContent = game1.remainingGuesses;
+    // console.log(game1.getPuzzle());
+    // console.log(game1.remainingGuesses);
+    console.log(game1.status);
+});
+
+
+
 // Inheritance tree
 // Look at product first
 // Then look at the prototype
@@ -10,10 +41,10 @@
 // Number: myNumber --> Number.prototype --> Object.prototype --> null
 // Boolean: myBoolean --> Boolean.prototype --> Object.prototype --> null
 
-const product = 'Computer';
-console.log(product);
-const otherProduct = new String('Phone');
-console.log(otherProduct);
+// const product = 'Computer';
+// console.log(product);
+// const otherProduct = new String('Phone');
+// console.log(otherProduct);
 
 // const getScore = () => 1;
 // console.log(getScore);

@@ -3,9 +3,44 @@ const Hangman = function (word, remainingGuesses) {
     this.word = word.toLowerCase().split('');
     this.remainingGuesses = remainingGuesses;
     this.guessedLetters = [];
+    this.status = 'playing';
 };
 
-// Member Method
+// ************************************************************
+// Member Methods
+// ************************************************************
+Hangman.prototype.calculateStatus = function () {
+
+// START - different ways to handle this
+    // let finished = true;
+
+    // this.word.forEach((letter) => {
+    //     if(this.guessedLetters.includes(letter)) {
+            
+    //     } else {
+    //         finished = false;
+    //     };
+    // });
+
+    // const lettersUnguessed = this.word.filter((letter) => {
+    //     return !this.guessedLetters.includes(letter);
+    // });
+
+    // const finished = lettersUnguessed.length === 0;
+// END - different ways to handle this
+
+    const finished = this.word.every((letter) => this.guessedLetters.includes(letter));
+// END - different ways to handle this
+
+    if(this.remainingGuesses === 0) {
+        this.status = 'failed';
+    } else if (finished) {
+        this.status = 'finished';
+    } else {
+        this.status = 'playing';
+    };
+};
+
 Hangman.prototype.getPuzzle = function () {
 
     let puzzle = '';
@@ -22,6 +57,7 @@ Hangman.prototype.getPuzzle = function () {
 };
 
 Hangman.prototype.makeGuess = function (guess) {
+    
     guess = guess.toLowerCase();
     const isUnique = !this.guessedLetters.includes(guess);
     const isBadGuess = !this.word.includes(guess);
@@ -33,22 +69,6 @@ Hangman.prototype.makeGuess = function (guess) {
     if (isUnique && isBadGuess) {
         this.remainingGuesses--;
     };
+
+    this.calculateStatus();
 };
-
-const game1 = new Hangman('cat', 2);
-console.log(game1.getPuzzle());
-console.log(game1.remainingGuesses);
-
-// const game2 = new Hangman('New Jersey', 4);
-// game2.makeGuess('w');
-// console.log(game2.getPuzzle());
-// console.log(game2.remainingGuesses);
-
-window.addEventListener('keypress', function (e) {
-    //const guess = String.fromCharCode(e.CharCode);
-    const guess = e.key
-    //console.log(guess);
-    game1.makeGuess(guess);
-    console.log(game1.getPuzzle());
-    console.log(game1.remainingGuesses);
-});
