@@ -2,7 +2,7 @@
 const puzzleElement = document.querySelector('#puzzle');
 const guessesElement = document.querySelector('#guesses');
 
-const game1 = new Hangman('cat', 2);
+const game1 = new Hangman('car parts', 2);
 // console.log(game1.getPuzzle());
 // console.log(game1.remainingGuesses);
 puzzleElement.textContent = game1.puzzle;
