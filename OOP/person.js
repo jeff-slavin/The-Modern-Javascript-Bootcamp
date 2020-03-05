@@ -1,4 +1,6 @@
-// Prototypal Inheritance (different than c++ inheritance)
+// Prototypal Inheritance (different but similar than c++ inheritance)
+// Prorotype Chain
+//     myPerson --> Person.prototype --> Object.prototype --> null
 
 // Constructor
 class Person {
@@ -27,6 +29,50 @@ class Person {
     };
 
 };
+
+// SUBCLASSES
+
+class Employee extends Person {
+
+    constructor(firstName, lastName, age, position, likes = []) {
+        super(firstName, lastName, age, likes); // call the parent constructor first (required)
+        this.position = position;
+    };
+
+    // override parent function
+    getBio() {
+        return `${this.firstName} ${this.lastName} is a ${this.position}.`;
+    };
+
+    // New method for Employee (not inherited/overriden from parent class)
+    getYearsLeft() {
+        return 65 - this.age;
+    };
+
+};
+
+class Student extends Person {
+
+    constructor(firstName, lastName, age, grade, likes = []) {
+        super(firstName, lastName, age, likes);
+        this.grade = grade;
+    };
+
+    updateGrade(change) {
+        this.grade += change;
+    };
+
+    getBio() {
+        const status = this.grade >= 70 ? 'passing' : 'failing';
+        return `${this.firstName} is ${status} the class.`;
+    };
+
+};
+
+const me = new Student('Jeff', 'Slavin', 38, 88);
+console.log(me.getBio());
+me.updateGrade(-20);
+console.log(me.getBio());
 
 // const myPerson = new PersonClass('Jeff', 'Slavin', 38, ['Teaching']);
 // console.log(myPerson.getBio());
@@ -63,7 +109,9 @@ class Person {
 // Person.prototype.location = 'Thailand';
 
 //const me = Person();
-const me = new Person('Jenn', 'Slavin', 37, ['Teaching', 'Biking']);
+// const me = new Employee('Jenn', 'Slavin', 37, 'Teacher', ['Teaching', 'Biking']);
+// console.log(me);
+// console.log(me.getYearsLeft());
 // Shadowing (prototypal inheritance)
 // We setup a new property on our instance
 // "me" first looks on itself, and it finds getBio, it never goes up to the prototype
@@ -71,19 +119,19 @@ const me = new Person('Jenn', 'Slavin', 37, ['Teaching', 'Biking']);
 // me.getBio = function () {
 //     return 'This is fake!';
 // };
-me.setName('Noah Slavin');
+// me.setName('Noah Slavin');
 // console.log(me);
 // console.log(typeof me);
 // console.log(me.age);
 // me.firstName = 'Jeff';
 // console.log(me);
-console.log(me.getBio());
+// console.log(me.getBio());
 
 // you can change what the member method does (above 'me' variable gets the first bio msg, the one below will get this new testing msg)
 // Person.prototype.getBio = function () {
 //     return 'Testing testing';
 // };
 
-const person2 = new Person('Jake', 'Davis', 40);
-// console.log(person2);
-console.log(person2.getBio());
+// const person2 = new Person('Jake', 'Davis', 40);
+// // console.log(person2);
+// console.log(person2.getBio());
