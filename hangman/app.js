@@ -39,6 +39,23 @@ request.addEventListener('readystatechange', (e) => {
 request.open('GET', 'http://puzzle.mead.io/puzzle?wordCount=3');
 request.send();
 
+const countryCode = "US";
+const countryRequest = new XMLHttpRequest();
+
+countryRequest.addEventListener('readystatechange', (e) => {
+    
+    if (e.target.readyState === 4 && e.target.status === 200) {
+        const data = JSON.parse(e.target.responseText);
+        const country = data.find((country) => country.alpha2Code === countryCode)
+        console.log(country.name);
+    } else if (e.target.readyState === 4) {
+        console.log('An error has occured');
+    }
+});
+
+countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all');
+countryRequest.send();
+
 //console.log(game1.status);
 
 // const game2 = new Hangman('New Jersey', 4);
