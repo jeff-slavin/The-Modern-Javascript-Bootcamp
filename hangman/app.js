@@ -24,11 +24,19 @@ window.addEventListener('keypress', (e) => {
     // console.log(game1.status);
 });
 
-getPuzzle((error, puzzle) => {
+getPuzzle('2', (error, puzzle) => {
     if(error) {
         console.log(`Error: ${error}`);
     } else {
         console.log(puzzle);
+    };
+});
+
+getCountry('US', (error, country) => {
+    if(error) {
+        console.log(error);
+    } else {
+        console.log(`Country name: ${country.name}`);
     };
 });
 
