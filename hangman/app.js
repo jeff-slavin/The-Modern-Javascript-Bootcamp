@@ -6,9 +6,9 @@ const game1 = new Hangman('cat', 2);
 // console.log(game1.getPuzzle());
 // console.log(game1.remainingGuesses);
 puzzleElement.textContent = game1.getPuzzle();
-guessesElement.textContent = game1.remainingGuesses;
+guessesElement.textContent = game1.getStatusMessage();
 
-console.log(game1.status);
+//console.log(game1.status);
 
 // const game2 = new Hangman('New Jersey', 4);
 // game2.makeGuess('w');
@@ -21,10 +21,10 @@ window.addEventListener('keypress', function (e) {
     //console.log(guess);
     game1.makeGuess(guess);
     puzzleElement.textContent = game1.getPuzzle();
-    guessesElement.textContent = game1.remainingGuesses;
+    guessesElement.textContent = game1.getStatusMessage();
     // console.log(game1.getPuzzle());
     // console.log(game1.remainingGuesses);
-    console.log(game1.status);
+    // console.log(game1.status);
 });
 
 
