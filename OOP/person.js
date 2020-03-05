@@ -1,31 +1,62 @@
 // Prototypal Inheritance (different than c++ inheritance)
 
 // Constructor
-// Likes has a default of an empty array
-const Person = function(firstName, lastName, age, likes = []) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.age = age;
-    this.likes = likes;
+class Person {
+    
+    constructor(firstName, lastName, age, likes = []) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.likes = likes;
+    };
+
+    getBio() {
+        let bio = `${this.firstName} is ${this.age}.`;
+
+        this.likes.forEach((like) => {
+            bio += ` ${this.firstName} likes ${like}.`;
+        });
+    
+        return bio;
+    };
+
+    setName(fullName) {
+        const names = fullName.split(' ');  // splits the fullName by a space (returns an array with 2 items)
+        this.firstName = names[0];
+        this.lastName = names[1];
+    };
+
 };
 
-// Member method
-Person.prototype.getBio = function () {
-    let bio = `${this.firstName} is ${this.age}.`;
+// const myPerson = new PersonClass('Jeff', 'Slavin', 38, ['Teaching']);
+// console.log(myPerson.getBio());
 
-    this.likes.forEach((like) => {
-        bio += ` ${this.firstName} likes ${like}.`;
-    });
+// // Constructor
+// // Likes has a default of an empty array
+// const Person = function(firstName, lastName, age, likes = []) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.age = age;
+//     this.likes = likes;
+// };
 
-    return bio;
-};
+// // Member method
+// Person.prototype.getBio = function () {
+//     let bio = `${this.firstName} is ${this.age}.`;
 
-// Member method
-Person.prototype.setName = function (fullName) {
-    const names = fullName.split(' ');  // splits the fullName by a space (returns an array with 2 items)
-    this.firstName = names[0];
-    this.lastName = names[1];
-};
+//     this.likes.forEach((like) => {
+//         bio += ` ${this.firstName} likes ${like}.`;
+//     });
+
+//     return bio;
+// };
+
+// // Member method
+// Person.prototype.setName = function (fullName) {
+//     const names = fullName.split(' ');  // splits the fullName by a space (returns an array with 2 items)
+//     this.firstName = names[0];
+//     this.lastName = names[1];
+// };
 
 // Members do not need to be methods. This creates a non function member with the value of 'Thailand' for all instances of Person
 // Usually does not serve much of a purpose
