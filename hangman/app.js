@@ -1,3 +1,7 @@
+// HTTP (Hyper Text Transfer Protocol)
+// Request - What do we want to do
+// Response - What was actually done
+
 
 const puzzleElement = document.querySelector('#puzzle');
 const guessesElement = document.querySelector('#guesses');
@@ -7,13 +11,6 @@ const game1 = new Hangman('car parts', 2);
 // console.log(game1.remainingGuesses);
 puzzleElement.textContent = game1.puzzle;
 guessesElement.textContent = game1.statusMessage;
-
-//console.log(game1.status);
-
-// const game2 = new Hangman('New Jersey', 4);
-// game2.makeGuess('w');
-// console.log(game2.getPuzzle());
-// console.log(game2.remainingGuesses);
 
 window.addEventListener('keypress', function (e) {
     //const guess = String.fromCharCode(e.CharCode);
@@ -27,7 +24,24 @@ window.addEventListener('keypress', function (e) {
     // console.log(game1.status);
 });
 
+const request = new XMLHttpRequest();
 
+request.addEventListener('readystatechange', (e) => {
+    if (e.target.readyState === 4) {        // 4 is 'DONE', the final response
+        const data = JSON.parse(e.target.responseText);
+        console.log(data);
+    };
+});
+
+request.open('GET', 'http://puzzle.mead.io/puzzle');
+request.send();
+
+//console.log(game1.status);
+
+// const game2 = new Hangman('New Jersey', 4);
+// game2.makeGuess('w');
+// console.log(game2.getPuzzle());
+// console.log(game2.remainingGuesses);
 
 // Inheritance tree
 // Look at product first
