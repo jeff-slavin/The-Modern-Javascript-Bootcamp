@@ -22,10 +22,14 @@ class Person {
         return bio;
     };
 
-    setName(fullName) {
+    set fullName(fullName) {
         const names = fullName.split(' ');  // splits the fullName by a space (returns an array with 2 items)
         this.firstName = names[0];
         this.lastName = names[1];
+    };
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
     };
 
 };
@@ -69,10 +73,11 @@ class Student extends Person {
 
 };
 
-const me = new Student('Jeff', 'Slavin', 38, 88);
+const me = new Employee('Jeff', 'Slavin', 38, 'Teacher');
+me.fullName = 'Crazy Master';
 console.log(me.getBio());
-me.updateGrade(-20);
-console.log(me.getBio());
+//me.updateGrade(-20);
+//console.log(me.getBio());
 
 // const myPerson = new PersonClass('Jeff', 'Slavin', 38, ['Teaching']);
 // console.log(myPerson.getBio());

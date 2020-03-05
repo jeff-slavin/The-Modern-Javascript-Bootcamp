@@ -5,8 +5,8 @@ const guessesElement = document.querySelector('#guesses');
 const game1 = new Hangman('cat', 2);
 // console.log(game1.getPuzzle());
 // console.log(game1.remainingGuesses);
-puzzleElement.textContent = game1.getPuzzle();
-guessesElement.textContent = game1.getStatusMessage();
+puzzleElement.textContent = game1.puzzle;
+guessesElement.textContent = game1.statusMessage;
 
 //console.log(game1.status);
 
@@ -20,8 +20,8 @@ window.addEventListener('keypress', function (e) {
     const guess = e.key
     //console.log(guess);
     game1.makeGuess(guess);
-    puzzleElement.textContent = game1.getPuzzle();
-    guessesElement.textContent = game1.getStatusMessage();
+    puzzleElement.textContent = game1.puzzle;
+    guessesElement.textContent = game1.statusMessage;
     // console.log(game1.getPuzzle());
     // console.log(game1.remainingGuesses);
     // console.log(game1.status);
