@@ -24,20 +24,16 @@ window.addEventListener('keypress', (e) => {
     // console.log(game1.status);
 });
 
-getPuzzle('2', (error, puzzle) => {
-    if(error) {
-        console.log(`Error: ${error}`);
-    } else {
-        console.log(puzzle);
-    };
+getPuzzle('2').then ((puzzle) => {
+    console.log(puzzle);
+}, (err) => {
+    console.log(`Error: ${err}`);
 });
 
-getCountry('US', (error, country) => {
-    if(error) {
-        console.log(error);
-    } else {
-        console.log(`Country name: ${country.name}`);
-    };
+getCountry('US').then ((country) => {
+    console.log(country.name);
+}, (err) => {
+    console.log(`Error: ${err}`);
 });
 
 // const puzzle = getPuzzleSync();
