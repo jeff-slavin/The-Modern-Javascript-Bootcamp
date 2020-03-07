@@ -36,7 +36,14 @@ window.addEventListener('keypress', (e) => {
 });
 
 const render = () => {
-    puzzleElement.textContent = game1.puzzle;
+    puzzleElement.innerHTML = '';
+
+    game1.puzzle.split('').forEach((letter) => {
+        const letterElement = document.createElement('span');
+        letterElement.textContent = letter;
+        puzzleElement.appendChild(letterElement);
+    });
+
     guessesElement.textContent = game1.statusMessage;
     lettersGuessedElement.textContent = `Letters guessed: ${game1.guessedLetters}`;
 };
