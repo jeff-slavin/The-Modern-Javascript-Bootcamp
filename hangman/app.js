@@ -4,30 +4,59 @@
 
 const puzzleElement = document.querySelector('#puzzle');
 const guessesElement = document.querySelector('#guesses');
+const lettersGuessedElement = document.querySelector('#letters-guessed');
+let game1;
 
-const game1 = new Hangman('car parts', 2);
 // console.log(game1.getPuzzle());
 // console.log(game1.remainingGuesses);
-puzzleElement.textContent = game1.puzzle;
-guessesElement.textContent = game1.statusMessage;
+// puzzleElement.textContent = game1.puzzle;
+// guessesElement.textContent = game1.statusMessage;
+
+// window.addEventListener('keypress', (e) => {
+//     //const guess = String.fromCharCode(e.CharCode);
+//     const guess = e.key
+//     //console.log(guess);
+//     game1.makeGuess(guess);
+//     puzzleElement.textContent = game1.puzzle;
+//     guessesElement.textContent = game1.statusMessage;
+//     // console.log(game1.getPuzzle());
+//     // console.log(game1.remainingGuesses);
+//     // console.log(game1.status);
+// });
 
 window.addEventListener('keypress', (e) => {
     //const guess = String.fromCharCode(e.CharCode);
     const guess = e.key
     //console.log(guess);
     game1.makeGuess(guess);
-    puzzleElement.textContent = game1.puzzle;
-    guessesElement.textContent = game1.statusMessage;
+    render();
     // console.log(game1.getPuzzle());
     // console.log(game1.remainingGuesses);
     // console.log(game1.status);
 });
 
-getPuzzle('2').then ((puzzle) => {
-    console.log(puzzle);
-}).catch((err) => {
-    console.log(`Error: ${err}`);
-});
+const render = () => {
+    puzzleElement.textContent = game1.puzzle;
+    guessesElement.textContent = game1.statusMessage;
+    lettersGuessedElement.textContent = `Letters guessed: ${game1.guessedLetters}`;
+};
+
+const startGame = async () => {
+    const puzzle = await getPuzzle('2');
+    game1 = new Hangman(puzzle, 5);
+    render();
+};
+
+document.querySelector('#reset').addEventListener('click', startGame);
+
+startGame();
+
+
+// getPuzzle('2').then ((puzzle) => {
+//     console.log(puzzle);
+// }).catch((err) => {
+//     console.log(`Error: ${err}`);
+// });
 
 // getCountry('US').then ((country) => {
 //     console.log(country.name);
@@ -35,11 +64,11 @@ getPuzzle('2').then ((puzzle) => {
 //     console.log(`Error: ${err}`);
 // });
 
-getCurrentCountry().then((country) => {
-    console.log(country.name);
-}).catch((err) => {
-    console.log(err);
-});
+// getCurrentCountry().then((country) => {
+//     console.log(country.name);
+// }).catch((err) => {
+//     console.log(err);
+// });
 
 // getLocation().then ((location) => {
 //     return getCountry(location.country);
