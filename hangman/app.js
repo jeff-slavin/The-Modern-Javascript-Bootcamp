@@ -29,14 +29,17 @@ getPuzzle('2').then ((puzzle) => {
     console.log(`Error: ${err}`);
 });
 
-getCountry('US').then ((country) => {
-    console.log(country.name);
-}).catch((err) => {
-    console.log(`Error: ${err}`);
-});
+// getCountry('US').then ((country) => {
+//     console.log(country.name);
+// }).catch((err) => {
+//     console.log(`Error: ${err}`);
+// });
 
 getLocation().then ((location) => {
-    console.log(`You are currently located in ${location.city}, ${location.region} ${location.country}`);
+    return getCountry(location.country);
+}).then ((country) => {
+    //console.log(`You are currently located in ${location.city}, ${location.region} ${country.name}`);
+    console.log(`You are currently located in ${country.name}`);
 }).catch((err) => {
     console.log(`Error: ${err}`);
 });
