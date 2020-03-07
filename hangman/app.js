@@ -2,7 +2,6 @@
 // Request - What do we want to do
 // Response - What was actually done
 
-
 const puzzleElement = document.querySelector('#puzzle');
 const guessesElement = document.querySelector('#guesses');
 
@@ -27,14 +26,14 @@ window.addEventListener('keypress', (e) => {
 getPuzzle('2').then ((puzzle) => {
     console.log(puzzle);
 }).catch((err) => {
-    console.log(`Error: ${error}`);
+    console.log(`Error: ${err}`);
 });
 
-// getCountry('US').then ((country) => {
-//     console.log(country.name);
-// }, (err) => {
-//     console.log(`Error: ${err}`);
-// });
+getCountry('US').then ((country) => {
+    console.log(country.name);
+}).catch((err) => {
+    console.log(`Error: ${err}`);
+});
 
 // fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
 //     if (response.status === 200) {
