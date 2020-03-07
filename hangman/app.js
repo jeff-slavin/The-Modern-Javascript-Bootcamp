@@ -1,12 +1,136 @@
+// HTTP (Hyper Text Transfer Protocol)
+// Request - What do we want to do
+// Response - What was actually done
 
 const puzzleElement = document.querySelector('#puzzle');
 const guessesElement = document.querySelector('#guesses');
+const lettersGuessedElement = document.querySelector('#letters-guessed');
+let game1;
 
-const game1 = new Hangman('car parts', 2);
 // console.log(game1.getPuzzle());
 // console.log(game1.remainingGuesses);
-puzzleElement.textContent = game1.puzzle;
-guessesElement.textContent = game1.statusMessage;
+// puzzleElement.textContent = game1.puzzle;
+// guessesElement.textContent = game1.statusMessage;
+
+// window.addEventListener('keypress', (e) => {
+//     //const guess = String.fromCharCode(e.CharCode);
+//     const guess = e.key
+//     //console.log(guess);
+//     game1.makeGuess(guess);
+//     puzzleElement.textContent = game1.puzzle;
+//     guessesElement.textContent = game1.statusMessage;
+//     // console.log(game1.getPuzzle());
+//     // console.log(game1.remainingGuesses);
+//     // console.log(game1.status);
+// });
+
+window.addEventListener('keypress', (e) => {
+    //const guess = String.fromCharCode(e.CharCode);
+    const guess = e.key
+    //console.log(guess);
+    game1.makeGuess(guess);
+    render();
+    // console.log(game1.getPuzzle());
+    // console.log(game1.remainingGuesses);
+    // console.log(game1.status);
+});
+
+const render = () => {
+    puzzleElement.textContent = game1.puzzle;
+    guessesElement.textContent = game1.statusMessage;
+    lettersGuessedElement.textContent = `Letters guessed: ${game1.guessedLetters}`;
+};
+
+const startGame = async () => {
+    const puzzle = await getPuzzle('2');
+    game1 = new Hangman(puzzle, 5);
+    render();
+};
+
+document.querySelector('#reset').addEventListener('click', startGame);
+
+startGame();
+
+
+// getPuzzle('2').then ((puzzle) => {
+//     console.log(puzzle);
+// }).catch((err) => {
+//     console.log(`Error: ${err}`);
+// });
+
+// getCountry('US').then ((country) => {
+//     console.log(country.name);
+// }).catch((err) => {
+//     console.log(`Error: ${err}`);
+// });
+
+// getCurrentCountry().then((country) => {
+//     console.log(country.name);
+// }).catch((err) => {
+//     console.log(err);
+// });
+
+// getLocation().then ((location) => {
+//     return getCountry(location.country);
+// }).then ((country) => {
+//     //console.log(`You are currently located in ${location.city}, ${location.region} ${country.name}`);
+//     console.log(`You are currently located in ${country.name}`);
+// }).catch((err) => {
+//     console.log(`Error: ${err}`);
+// });
+
+
+
+
+
+// fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
+//     if (response.status === 200) {
+//         return response.json();
+//     } else {
+//         throw new Error('Unable to fetch the puzzle.');
+//     };
+// }).then((data) => {
+//     console.log(data.puzzle);
+// }).catch((err) => {
+//     console.log(err);
+// });
+
+// const puzzle = getPuzzleSync();
+// console.log(puzzle);
+
+// console.log('Do something else');
+
+// Making an HTTP request
+// const request = new XMLHttpRequest();
+
+// request.addEventListener('readystatechange', (e) => {
+//     if (e.target.readyState === 4 && e.target.status === 200) {        // 4 is 'DONE', the final response
+//         const data = JSON.parse(e.target.responseText);
+//         console.log(data);
+//     } else if (e.target.readyState === 4) {
+//         console.log('An error has taken place');
+//     }
+// });
+
+// request.open('GET', 'http://puzzle.mead.io/puzzle?wordCount=3');
+// request.send();
+
+// const countryCode = "US";
+// const countryRequest = new XMLHttpRequest();
+
+// countryRequest.addEventListener('readystatechange', (e) => {
+    
+//     if (e.target.readyState === 4 && e.target.status === 200) {
+//         const data = JSON.parse(e.target.responseText);
+//         const country = data.find((country) => country.alpha2Code === countryCode)
+//         console.log(country.name);
+//     } else if (e.target.readyState === 4) {
+//         console.log('An error has occured');
+//     }
+// });
+
+// countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all');
+// countryRequest.send();
 
 //console.log(game1.status);
 
@@ -14,20 +138,6 @@ guessesElement.textContent = game1.statusMessage;
 // game2.makeGuess('w');
 // console.log(game2.getPuzzle());
 // console.log(game2.remainingGuesses);
-
-window.addEventListener('keypress', function (e) {
-    //const guess = String.fromCharCode(e.CharCode);
-    const guess = e.key
-    //console.log(guess);
-    game1.makeGuess(guess);
-    puzzleElement.textContent = game1.puzzle;
-    guessesElement.textContent = game1.statusMessage;
-    // console.log(game1.getPuzzle());
-    // console.log(game1.remainingGuesses);
-    // console.log(game1.status);
-});
-
-
 
 // Inheritance tree
 // Look at product first
