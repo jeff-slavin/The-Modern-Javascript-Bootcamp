@@ -4,6 +4,8 @@
 
     <HEAD>
         <LINK HREF="/styles/styles.css" REL="stylesheet">
+        <TITLE>Notes App</TITLE>
+        <LINK HREF="/images/favicon_notes.png" REL="icon">
     </HEAD>
 
     <BODY>
@@ -21,9 +23,11 @@
             </DIV>
         </DIV>
 
-        <INPUT id="note-title" placeholder="Note Title">
-        <TEXTAREA id="note-body" placeholder="Enter note text"></TEXTAREA>
-        <BUTTON id="remove-note">Remove Note</BUTTON>
+        <DIV class="container">
+            <INPUT id="note-title" class="title-input" placeholder="Note Title">
+            <TEXTAREA id="note-body" class="body-input" placeholder="Enter note text"></TEXTAREA>
+            <BUTTON id="remove-note" class="button button--secondary">Remove Note</BUTTON>
+        </DIV>
         <SCRIPT src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></SCRIPT>
         <SCRIPT src="/scripts/notes-functions.js"></SCRIPT>
         <SCRIPT src="/scripts/notes-edit.js"></SCRIPT>
