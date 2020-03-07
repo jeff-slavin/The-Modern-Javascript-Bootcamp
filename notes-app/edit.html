@@ -2,17 +2,31 @@
 
 <HTML>
 
-    <HEAD></HEAD>
+    <HEAD>
+        <LINK HREF="/styles/styles.css" REL="stylesheet">
+    </HEAD>
 
     <BODY>
-        <A HREF="/index.html">Home</A>
+        <DIV class="header">
+            <DIV class="container">
+                <H1 class="header__title">Notes App</H1>
+                <H2 class="header__subtitle">Take notes and never forget</H2>
+            </DIV>
+        </DIV>
+
+        <DIV class="actions">
+            <DIV class="actions__container actions__container--spaced">
+                <A HREF="/index.html">Home</A>
+                <SPAN id="last-edited"></SPAN>
+            </DIV>
+        </DIV>
+
         <INPUT id="note-title" placeholder="Note Title">
-        <SPAN id="last-edited"></SPAN>
         <TEXTAREA id="note-body" placeholder="Enter note text"></TEXTAREA>
         <BUTTON id="remove-note">Remove Note</BUTTON>
         <SCRIPT src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></SCRIPT>
-        <SCRIPT src="notes-functions.js"></SCRIPT>
-        <SCRIPT src="notes-edit.js"></SCRIPT>
+        <SCRIPT src="/scripts/notes-functions.js"></SCRIPT>
+        <SCRIPT src="/scripts/notes-edit.js"></SCRIPT>
     </BODY>
 
 </HTML>
