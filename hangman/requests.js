@@ -23,6 +23,16 @@ const getCountry = (countryCode) => {
     });
 };
 
+const getLocation = () => {
+    return fetch('http://ipinfo.io/json?token=1a11bd55cc8f9c', {}).then((response) => {
+        if(response.status === 200) {
+            return response.json();
+        } else {
+            throw new Error('Unable to fetch location data');
+        };
+    });
+};
+
 // const getCountry = (countryCode) => new Promise( (resolve, reject) => {
 
 //     const countryRequest = new XMLHttpRequest();

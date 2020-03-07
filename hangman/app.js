@@ -35,6 +35,16 @@ getCountry('US').then ((country) => {
     console.log(`Error: ${err}`);
 });
 
+getLocation().then ((location) => {
+    console.log(`You are currently located in ${location.city}, ${location.region} ${location.country}`);
+}).catch((err) => {
+    console.log(`Error: ${err}`);
+});
+
+
+
+
+
 // fetch('http://puzzle.mead.io/puzzle', {}).then((response) => {
 //     if (response.status === 200) {
 //         return response.json();
