@@ -3,22 +3,33 @@
 <HTML>
 
     <HEAD>
-        
+        <LINK HREF="/styles/styles.css" REL="stylesheet">
+        <TITLE>Notes App</TITLE>
+        <LINK HREF="/images/favicon_notes.png" REL="icon">
     </HEAD>
 
     <BODY>
+        <HEADER class="header">
+            <DIV class="container">
+                <H1 class="header__title">Notes App</H1>
+                <H2 class="header__subtitle">Take notes and never forget</H2>
+            </DIV>
+        </HEADER>
+        <DIV class="actions">
+            <DIV class="actions__container">
+                <INPUT id="search-text" type="text" class="input" placeholder="Filter Notes">
+                    <SELECT id="filter-by" class="dropdown">
+                        <OPTION value="byEdited">Sort by last edited</OPTION>
+                        <OPTION value="byCreated">Sort by recently created</OPTION>
+                        <OPTION value="alphabetical">Sort alphabetically</OPTION>
+                    </SELECT>
+            </DIV>
+        </DIV>
+        <DIV class="container">
+            <DIV id="notes"></DIV>
+                <BUTTON id="create-note" class="button">Create Note</BUTTON>
+        </DIV>
         
-        <H1>Notes App</H1>
-        <H2>Take notes and never forget</H2>
-        <INPUT id="search-text" type="text" placeholder="Filter Notes">
-        <SELECT id="filter-by">
-            <OPTION value="byEdited">Sort by last edited</OPTION>
-            <OPTION value="byCreated">Sort by recently created</OPTION>
-            <OPTION value="alphabetical">Sort alphabetically</OPTION>
-        </SELECT>
-        <DIV id="notes"></DIV>
-        <BUTTON id="create-note">Create Note</BUTTON>
-        <BR><BR>
         <!-- <LABEL>
             <INPUT id="for-fun" type="checkbox"> Check me for fun
         </LABEL> -->
@@ -28,8 +39,8 @@
         </FORM> -->
         <SCRIPT src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></SCRIPT>
         <SCRIPT src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></SCRIPT>
-        <SCRIPT src="notes-functions.js"></SCRIPT>
-        <SCRIPT src="notes-app.js"></SCRIPT>
+        <SCRIPT src="/scripts/notes-functions.js"></SCRIPT>
+        <SCRIPT src="/scripts/notes-app.js"></SCRIPT>
     </BODY>
 
 </HTML>

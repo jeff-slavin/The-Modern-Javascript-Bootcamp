@@ -2,17 +2,22 @@
 
 <HTML>
 
-    <HEAD></HEAD>
+    <HEAD>
+        <TITLE>Hangman</TITLE>
+        <LINK href="/styles/styles.css" rel="stylesheet">
+        <LINK href="images/favicon.png" rel="icon">
+    </HEAD>
 
     <BODY>
-        <P id="puzzle"></P>
-        <P id="guesses"></P>
-        <P id="letters-guessed"></P>
-        <BUTTON id="reset">Reset</BUTTON>
-        <!-- <INPUT type='checkbox'> -->
-        <SCRIPT SRC="requests.js"></SCRIPT>
-        <SCRIPT SRC="hangman.js"></SCRIPT>
-        <SCRIPT SRC="app.js"></SCRIPT>
+        <DIV>
+            <DIV id="puzzle" class="puzzle"></DIV>
+            <P id="guesses"></P>
+            <P id="letters-guessed"></P>
+            <BUTTON id="reset" class="button">Reset</BUTTON>
+        </DIV>
+        <SCRIPT SRC="/scripts/requests.js"></SCRIPT>
+        <SCRIPT SRC="/scripts/hangman.js"></SCRIPT>
+        <SCRIPT SRC="/scripts/app.js"></SCRIPT>
     </BODY>
 
 </HTML>
