@@ -3,27 +3,39 @@
 <HTML>
 
     <HEAD>
-
+        <TITLE>To-do App</TITLE>
+        <LINK HREF="/styles/styles.css" REL="stylesheet">
+        <LINK HREF="/images/favicon.png" REL="icon">
     </HEAD>
 
     <BODY>
+        <DIV class="header">
+            <DIV class="container">
+                <H1 class="header_title">Todo-App</H1>
+                <H2 class="header_subtitle">What do you need to do?</H2>
+            </DIV>
+        </DIV>
 
-        <H1>TODOs - Dropdowns</H1>
-        <BR>
-        <BR><BR>
-        <INPUT id="search-text" type="text" placeholder="Filter TODOs">
-        <BR><BR>
-        <LABEL>
-            <INPUT type="checkbox" id="hide-completed"> Hide Completed
-        </LABEL>
-        <DIV id="todos"></DIV>
-        <FORM id="new-todo">
-            <INPUT type="text" placeholder="Something to do" name="text">
-            <BUTTON>Add TODO</BUTTON>
-        </FORM>
+        <DIV class="actions">
+            <DIV class="actions_container">
+                <INPUT id="search-text" class="input" type="text" placeholder="Filter TODOs">
+                <LABEL class="checkbox">
+                    <INPUT type="checkbox" id="hide-completed"> Hide Completed
+                </LABEL>
+            </DIV>
+        </DIV>
+
+        <DIV class="container">
+            <DIV id="todos"></DIV>
+            <FORM id="new-todo">
+                <INPUT type="text" class="input" placeholder="Something to do" name="text">
+                <BUTTON class="button">Add TODO</BUTTON>
+            </FORM>
+        </DIV>
+
         <SCRIPT src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></SCRIPT>
-        <SCRIPT src="todo-functions.js"></SCRIPT>
-        <SCRIPT src="todo-app.js"></SCRIPT>
+        <SCRIPT src="/scripts/todo-functions.js"></SCRIPT>
+        <SCRIPT src="/scripts/todo-app.js"></SCRIPT>
 
     </BODY>
 
