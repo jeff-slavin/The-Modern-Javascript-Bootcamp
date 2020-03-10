@@ -5,5 +5,17 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'public/scripts'),                // needs to be an absolute path
         filename: 'bundle.js'
+    },
+    module: {
+        rules: [{   // an array of objects
+            test: /\.js$/,        // regular expression (. character in regex has a special meaning, adding '\' means to match an actual '.' Also, the $ at the end means we are looking for this match at the end of the string)
+            exclude: /node_modules/,        // regular expression
+            use: {  // needs to be an object
+                loader: 'babel-loader',
+                options: {  // an object 
+                    presets: ['env']    // array of strings
+                }
+            }
+        }]
     }
 };
