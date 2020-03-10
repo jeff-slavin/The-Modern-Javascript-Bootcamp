@@ -17,10 +17,12 @@
 
 // New syntax - to export everything at once
 const add = (a, b) => a + b;
-const name = 'Mary Jane Slavin';
+const name = 'Caleb and Noah Slavin';
 
 // Default export
 const square = (x) => x * x;
+
+console.log('from my code');
 
 // Last line of the file - can setup our exports
 // Exports - named only - no default
