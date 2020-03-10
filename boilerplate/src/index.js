@@ -17,8 +17,7 @@ import otherSquare, { add, name } from './utilities';
 import otherScream from './scream';     // using default import (and renaming the function)
 
 console.log('index.js');
-
-console.log(add(32,1));
+console.log(add(32,4));
 console.log(name);
 console.log(otherScream(name));
-console.log(otherSquare(10));
+console.log(otherSquare(25));
