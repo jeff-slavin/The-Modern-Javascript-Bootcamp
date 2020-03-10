@@ -1,11 +1,9 @@
-const name = 'Caleb';
+//import './utilities' // can leave off the file extension (so no need to include '.js')
+import { add, name } from './utilities';    // can leave off the file extension (so no need to include '.js')
+import { scream } from './scream';
+
+console.log('index.js');
+
+console.log(add(32,1));
 console.log(name);
-
-class Hangman {
-    myMethod() {
-        return 'Testing';
-    }
-};
-
-const hangman = new Hangman();
-console.log(hangman.myMethod());
+console.log(scream(name));
