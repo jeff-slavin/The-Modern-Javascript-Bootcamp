@@ -35,6 +35,8 @@ const createNote = () => {
     });
 
     saveNotes();
+
+    return uniqueID;
 };
 
 // Remove a note from the list
@@ -102,6 +104,8 @@ const updateNote = (id, updates) => {
     };
 
     saveNotes();
+
+    return note;
 };
 
 notes = loadNotes();
