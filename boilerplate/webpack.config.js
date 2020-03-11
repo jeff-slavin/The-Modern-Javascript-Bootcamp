@@ -22,5 +22,5 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/scripts/'
     },
-    devtool: 'source-map'
+    devtool: 'source-map'   // makes it so items in the console in devtools for browser actually point to our code before webpack conversion (so line #s and code look good and helpful)
 };

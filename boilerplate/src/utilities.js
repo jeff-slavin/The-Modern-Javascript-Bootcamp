@@ -17,7 +17,7 @@
 
 // New syntax - to export everything at once
 const add = (a, b) => a + b;
-const name = 'Caleb and Noah Slavin';
+const name = 'Mommy Slavin';
 
 // Default export
 const square = (x) => x * x;
