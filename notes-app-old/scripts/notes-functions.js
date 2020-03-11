@@ -1,16 +1,5 @@
 'use strict';
 
-// let data;
-
-// const processData = () => {
-//     data = '1234567890';
-// };
-
-// processData();
-
-// console.log(data);
-
-// Read existing notes from localStorage
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem('notes');
 
@@ -19,34 +8,12 @@ const getSavedNotes = () => {
     } catch (e) {
         return [];
     };
-
-    // return notesJSON !== null ? JSON.parse(notesJSON) : [];
-
-    // if(notesJSON !== null) {
-    //     return JSON.parse(notesJSON);
-    // } else {
-    //     return [];
-    // };
 };
-
-// const getSavedNotes = function() {
-//     const notesJSON = localStorage.getItem('notes');
-
-//     if(notesJSON !== null) {
-//         return JSON.parse(notesJSON);
-//     } else {
-//         return [];
-//     };
-// };
 
 // Save the notes to localStorage
 const saveNotes = (notes) => {
     localStorage.setItem('notes', JSON.stringify(notes));
 };
-
-// const saveNotes = function(notes) {
-//     localStorage.setItem('notes', JSON.stringify(notes));
-// };
 
 // Remove a note from the list
 const removeNote = (id) => {
@@ -57,33 +24,12 @@ const removeNote = (id) => {
     };
 };
 
-// const removeNote = function(id) {
-//     const noteIndex = notes.findIndex(function(note) {
-//         return note.id === id;
-//     });
-
-//     if (noteIndex > -1) {
-//         notes.splice(noteIndex, 1);
-//     };
-// };
-
 // Generate the DOM structure for a note
 const generateNoteDOM = (note) => {
 
     const noteElement = document.createElement('a');
     const textElement = document.createElement('p');
     const statusElement = document.createElement('p');
-
-    // const button = document.createElement('button');
-
-    // // Setup the remove note button
-    // button.textContent = 'x';
-    // noteElement.appendChild(button);
-    // button.addEventListener('click', (e) => {
-    //     removeNote(note.id);
-    //     saveNotes(notes);
-    //     renderNotes(notes, filters);
-    // });
 
     // Setup the note title text
     if (note.title.length > 0) {
