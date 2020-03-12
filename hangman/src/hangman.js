@@ -53,7 +53,9 @@ class Hangman {
         };
     
         if (isUnique) {
-            this.guessedLetters.push(guess);
+            // updating the below to use the spread operator
+            this.guessedLetters = [...this.guessedLetters, guess]
+            //this.guessedLetters.push(guess);
         };
     
         if (isUnique && isBadGuess) {
