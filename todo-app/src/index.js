@@ -1,7 +1,38 @@
-import { getTODOs, createTODO, removeTODO, toggleTODO } from './todos';
+import { renderTODOs } from './views';
+import { setFilters } from './filters';
+import { createTODO, loadTODOs } from './todos';
 
-console.log(getTODOs());
+renderTODOs();
 
-removeTODO('2ee53fca-0d27-4e58-9c3e-a8ddae96c6d8');
+document.querySelector('#search-text').addEventListener('input', (e) => {
+    setFilters({
+        searchText: e.target.value
+    });
+    renderTODOs();
+});
 
-console.log(getTODOs());
+document.querySelector('#new-todo').addEventListener('submit', (e) => {
+    const text = e.target.elements.text.value.trim();
+    e.preventDefault();
+
+    if(text.length > 0) {
+        createTODO(text);
+        renderTODOs();
+        e.target.elements.text.value = '';
+    };
+});
+
+document.querySelector('#hide-completed').addEventListener('change', (e) => {
+    setFilters({
+        hideCompleted: e.target.checked
+    });
+    renderTODOs();
+});
+
+// Keeps multiple tabs in sync
+window.addEventListener('storage', (e) => {
+    if (e.key === 'todos') {
+        loadTODOs();
+        renderTODOs();
+    };
+});

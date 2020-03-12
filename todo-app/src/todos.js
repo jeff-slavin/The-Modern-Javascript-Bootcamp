@@ -1,4 +1,5 @@
-import uuidv4 from 'uuid/v4';
+//import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 let todos = [];
 
@@ -54,4 +55,4 @@ const toggleTODO = (id) => {
 
 loadTODOs();
 
-export { getTODOs, createTODO, removeTODO, toggleTODO };
+export { loadTODOs, getTODOs, createTODO, removeTODO, toggleTODO };

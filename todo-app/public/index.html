@@ -3,12 +3,38 @@
 <HTML>
 
     <HEAD>
-        <TITLE>Boilerplate App</TITLE>
+        <TITLE>To-do App</TITLE>
+        <LINK HREF="/styles/styles.css" REL="stylesheet">
+        <LINK HREF="/images/favicon.png" REL="icon">
     </HEAD>
 
     <BODY>
-        <H1>Boilerplate</H1>
+        <DIV class="header">
+            <DIV class="container">
+                <H1 class="header__title">Todo-App</H1>
+                <H2 class="header__subtitle">What do you need to do?</H2>
+            </DIV>
+        </DIV>
+
+        <DIV class="actions">
+            <DIV class="actions__container">
+                <INPUT id="search-text" class="input" type="text" placeholder="Filter TODOs">
+                <LABEL class="checkbox">
+                    <INPUT type="checkbox" id="hide-completed"> Hide Completed
+                </LABEL>
+            </DIV>
+        </DIV>
+
+        <DIV class="container">
+            <DIV id="todos"></DIV>
+            <FORM id="new-todo">
+                <INPUT type="text" class="input" placeholder="Something to do" name="text">
+                <BUTTON class="button">Add TODO</BUTTON>
+            </FORM>
+        </DIV>
+
         <SCRIPT src="/scripts/bundle.js"></SCRIPT>
+
     </BODY>
 
 </HTML>
