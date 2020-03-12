@@ -2,13 +2,16 @@ import { getTODOs, toggleTODO, removeTODO } from './todos';
 import { getFilters } from './filters';
 
 // Render application TODOs
+// DESTRUCTURING
 const renderTODOs = () => {
     const todoElement = document.querySelector('#todos');
-    const filters = getFilters();
+    const { searchText, hideCompleted } = getFilters();
+    
+    //const filters = getFilters();
     
     const filteredTodos = getTODOs().filter((todo) => {
-        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
-        const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
+        const searchTextMatch = todo.text.toLowerCase().includes(searchText.toLowerCase());
+        const hideCompletedMatch = !hideCompleted || !todo.completed;
         return searchTextMatch && hideCompletedMatch;
     });
 
@@ -29,6 +32,37 @@ const renderTODOs = () => {
     };
     
 };
+
+// Render application TODOs
+// const renderTODOs = () => {
+//     const todoElement = document.querySelector('#todos');
+
+
+//     const filters = getFilters();
+    
+//     const filteredTodos = getTODOs().filter((todo) => {
+//         const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase());
+//         const hideCompletedMatch = !filters.hideCompleted || !todo.completed;
+//         return searchTextMatch && hideCompletedMatch;
+//     });
+
+//     const incompleteTodos = filteredTodos.filter((todo) => !todo.completed);
+
+//     todoElement.innerHTML = '';
+//     todoElement.appendChild(generateTODOSummaryDOM(incompleteTodos));
+
+//     if (filteredTodos.length > 0) {
+//         filteredTodos.forEach((item) => {
+//             todoElement.appendChild(generateTODODOM(item));
+//         });
+//     } else {
+//         const messageElement = document.createElement('p');
+//         messageElement.classList.add('empty-message');
+//         messageElement.textContent = 'No to-dos to show';
+//         todoElement.appendChild(messageElement);
+//     };
+    
+// };
 
 // Generate the DOM structure for a TODO
 const generateTODODOM = (todo) => {
