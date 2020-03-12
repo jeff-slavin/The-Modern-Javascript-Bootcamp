@@ -10,8 +10,47 @@ const team = {
     players: ['Marge', 'Aiden', 'Herbert', 'Sherry']  
 };
 
+let house = {
+    bedrooms: 2,
+    bathrooms: 1.5,
+    yearBuilt: 2017
+};
+
+let newHouse = {
+    basement: true,
+    ...house,    // spread operator for an object (copies all of the house stuff over)
+    bedrooms: 3     // overrides the bedrooms value (since we spread out the original one above), if we set this above the spread-out, the spread out would override what we set. whatever comes last takes precedent
+};
+
+newHouse.yearBuilt = 2018;  // changing 2nd object only
+
+console.log(house);
+console.log(newHouse);
+
+// Challenge spread out objects
+
+const person = {
+    name: 'Jeff',
+    age: 38
+};
+
+const location = {
+    city: 'Highlands Ranch',
+    country: 'USA'
+};
+
+// combining the 2 objects above using the spread operator
+const overview = {
+    ...person,
+    ...location
+};
+
+console.log(overview);
+
+
+
 // Spread operator - "... team.players" - this spreads the array of players out to be separate arguments which our function requires
-printTeam(team.name, team.coach, ...team.players);
+// printTeam(team.name, team.coach, ...team.players);
 
 
 //const cities = ['Barcelona', 'Cape Town', 'Long Beach', 'Denver', 'Houston'];
@@ -23,11 +62,11 @@ printTeam(team.name, team.coach, ...team.players);
 // citiesCopy.push('Highlands Ranch'); // adding an item to the 2nd array, 1st array will not change
 
 // adding on an item to an array beginning or ending (another way to do this w/out push)
-let cities = ['Barcelona', 'Cape Town', 'Long Beach', 'Denver', 'Houston']; 
-cities = [...cities, 'Highlands Ranch'];
+// let cities = ['Barcelona', 'Cape Town', 'Long Beach', 'Denver', 'Houston']; 
+// cities = [...cities, 'Highlands Ranch'];
 
 //console.log(citiesCopy);
-console.log(cities);
+// console.log(cities);
 
 // // ...numbers - converts all incoming arguments into an array.
 // // Makes function dynamic so can take any number of arguments

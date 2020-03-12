@@ -13,7 +13,8 @@ module.exports = {
             use: {  // needs to be an object
                 loader: 'babel-loader',
                 options: {  // an object 
-                    presets: ['env']    // array of strings
+                    presets: ['env'],    // array of strings
+                    plugins: ['transform-object-rest-spread']   // added for the new module we installed (see package.json)
                 }
             }
         }]
